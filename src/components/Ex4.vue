@@ -14,7 +14,7 @@
     // implement methods below 
     // part 1
     function changeColor() {
-        if (blueBox.value) {
+        if (blueBox.value === true) {
             blueBox.value = false
             blueBtn.value = false
         } else {
@@ -42,19 +42,24 @@
     <!-- note: need to use single quotes '' for classes such as btn-primary which contains '-' signs
                 because '-' is a minus operator for (Vue) JavaScript  -->
     <div id="part1">
-        <div>
+        <div :id="id" :class="{'blueBox': blueBox, 'redBox': !blueBox}">
             div ID : {{id}} 
         </div>
         
-        <button type="button" v-on:click="changeColor">Change Color</button>
+        <button type="button" v-on:click="changeColor"
+        v-bind:class="{'btn': true, 'btn-primary': !redBtn, 'btn-danger': redBtn}">Change Color</button>
     </div>
 
     <div id="part2">
-        <div>
+        <div :style="{
+            color: activeColor
+        }">
             div ID : {{id}} 
         </div>
        
-        <button type="button" v-on:click="changeTextColor">Change Text Color</button> 
+        <button type="button"
+        v-bind:class="{'btn': true, 'btn-primary': !redBtn, 'btn-danger': redBtn}"
+        @click="changeTextColor">Change Text Color</button> 
     </div>
 
 </template>
