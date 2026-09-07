@@ -8,7 +8,7 @@
         height: 200,
 
     }
-    import me from '../../public/assets/me.png'
+    const me = ref("../../public/assets/me.png")
     const width = ref(200)
     const height = ref(200)
 
